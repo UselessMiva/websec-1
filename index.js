@@ -56,7 +56,7 @@ function onClickHandler() {
                     result = firstNumber ** secondNumber;
                     break;
             }
-            const resultStr = operation === '/' && result % 1 !== 0
+            const resultStr = result % 1 !== 0
                 ? `${firstNumber} ${operation} ${secondNumber} = ${result.toFixed(6)}` 
                 : `${firstNumber} ${operation} ${secondNumber} = ${result}`;
             setRes(resultStr);
