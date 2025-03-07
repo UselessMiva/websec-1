@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const calcButton = document.querySelector('.calc-result');
     calcButton && calcButton.addEventListener('click', onClickHandler);
-
     const prevResultElem = document.querySelector(".prev-result");
-
     if (prevResultElem && window.localStorage && window.localStorage.getItem('previousResult'))
         prevResultElem.innerHTML = window.localStorage.getItem('previousResult');
 })
@@ -25,18 +23,15 @@ function onClickHandler() {
 
     if (firstNumElem
         && secondNumElem
-        && operationElem
-    ) {
+        && operationElem) {
+        const firstNumber = parseFloat(firstNumElem.value);
+        const secondNumber = parseFloat(secondNumElem.value);
 
-        const firstNumber = Number.parseFloat(firstNumElem.value);
-        const secondNumber = Number.parseFloat(secondNumElem.value);
-
-        if (!Number.isNaN(firstNumber) && !Number.isNaN(secondNumber)) {
+        if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
             const operation = operationElem.value;
-
             if (operation === "/" || operation === "%") {
                 if (secondNumber === 0) {
-                    alert("Деление на 0");
+                    alert('Попытка деления на 0');
                     return;
                 }
             }
@@ -63,11 +58,11 @@ function onClickHandler() {
             }
             const resultStr = operation === '/' && result % 1 !== 0
                 ? `${firstNumber} ${operation} ${secondNumber} = ${result.toFixed(6)}` 
-                : `${firstNumber} ${operation} ${secondNumber} = ${Number(result)}`;
+                : `${firstNumber} ${operation} ${secondNumber} = ${result}`;
             setRes(resultStr);
         }
         else {
-            alert('Заполните все поля!')
+            alert('Поля заполенены некорректно!')
         }
 
     }

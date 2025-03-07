@@ -116,7 +116,7 @@ p {
 
 .prev-result {
   color: var(--main-font-color);
-  filter: opacity(0.65);
+  filter: opacity(0.5);
   margin-bottom: 9px;
 }
 
